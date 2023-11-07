@@ -8,7 +8,9 @@ function homeLayout({children}) {
         <SideBarNav />
       </div>
       <Header />
+      <div className='ml-64 p-5'>
       {children}
+      </div>
     </div>
   )
 }
