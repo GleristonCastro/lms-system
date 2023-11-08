@@ -1,10 +1,13 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import CategoryFilter from '../../_components/CategoryFilter'
+import React, { useEffect, useState } from 'react'
+import CategoryFilter from './_components/CategoryFilter'
 import { getCourseList } from '../../../_services/index'
+import CourseList from './_components/CourseList'
 
 function Browse() {
+  const [ courses, setCourses ] = useState([])
+
   useEffect(() => {
     getCourses()
   }, [])
@@ -12,12 +15,14 @@ function Browse() {
   const getCourses = () => {
     getCourseList().then(resp => {
       console.log(resp)
+      setCourses(resp.courseLists)
     })
   }
 
   return (
     <div>
       <CategoryFilter />
+      {courses ? <CourseList courses={courses} /> : null}
     </div>
   )
 }
