@@ -14,6 +14,9 @@ export const getCourseList = async () => {
       id
       totalChapters
       tag
+      createdBy {
+        name
+      }
     }
   }
   `
